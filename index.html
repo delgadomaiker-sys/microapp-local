@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Directorio Local</title>
+  <!-- SDK Oficial de Telegram Mini Apps -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--tg-theme-bg-color, #f4f4f9);
+      color: var(--tg-theme-text-color, #222);
+      padding: 12px;
+      margin: 0;
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .card {
+      background: var(--tg-theme-secondary-bg-color, #ffffff);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .card h3 {
+      margin: 0 0 5px 0;
+      font-size: 17px;
+      color: var(--tg-theme-text-color, #000);
+    }
+    .card p {
+      margin: 0 0 12px 0;
+      font-size: 14px;
+      color: var(--tg-theme-hint-color, #666);
+    }
+    .btn {
+      background-color: var(--tg-theme-button-color, #2481cc);
+      color: var(--tg-theme-button-text-color, #ffffff);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      width: 100%;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .badge {
+      display: inline-block;
+      background: #e1f5fe;
+      color: #0288d1;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>📍 Comercios en tu Zona</h2>
+
+  <div id="catalog">
+    <!-- Comercio 1 -->
+    <div class="card">
+      <span class="badge">Repuestos</span>
+      <h3>🚗 AutoRepuestos Express</h3>
+      <p>Repuestos multimarca y envío rápido a domicilio.</p>
+      <button class="btn" onclick="contactStore('AutoRepuestos Express')">Contactar / Pedir</button>
+    </div>
+
+    <!-- Comercio 2 -->
+    <div class="card">
+      <span class="badge">🍔 Comida / Delivery</span>
+      <h3>🍕 Burger & Pizza House</h3>
+      <p>Las mejores hamburguesas artesanales de la ciudad.</p>
+      <button class="btn" onclick="contactStore('Burger & Pizza House')">Ver Menú</button>
+    </div>
+
+    <!-- Comercio 3 -->
+    <div class="card">
+      <span class="badge">Servicios</span>
+      <h3>🛠️ ServiciTecnica Ve</h3>
+      <p>Instalación y mantenimiento de aires acondicionados.</p>
+      <button class="btn" onclick="contactStore('ServiciTecnica Ve')">Solicitar Cotización</button>
+    </div>
+  </div>
+
+  <script>
+    // Inicializar el entorno de Telegram
+    const tg = window.Telegram.WebApp;
+    tg.expand(); // Expande la app para ocupar toda la pantalla
+
+    function contactStore(storeName) {
+      // Envía una alerta visual al usuario en Telegram
+      tg.showAlert(`Has seleccionado a: ${storeName}. Pronto integraremos el chat directo.`);
+      
+      // Si prefieres enviar los datos de vuelta al bot de Telegram, descomenta la siguiente línea:
+      // tg.sendData(JSON.stringify({ action: "select_store", store: storeName }));
+    }
+  </script>
+</body>
+</html>
